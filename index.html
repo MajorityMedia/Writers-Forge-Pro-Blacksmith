@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Writer's Forge Pro - Write Like You Fucking Mean It</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0a0a0a;
+            color: #e8e8e8;
+            line-height: 1.6;
+        }
+
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1a0000 0%, #0a0a0a 50%, #1a0000 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '🔥';
+            position: absolute;
+            font-size: 400px;
+            opacity: 0.03;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .hero-content {
+            max-width: 1000px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(220, 38, 38, 0.2);
+            border: 2px solid #dc2626;
+            color: #fca5a5;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 2rem;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #ffffff 0%, #dc2626 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .curse {
+            color: #dc2626;
+            -webkit-text-fill-color: #dc2626;
+        }
+
+        .subheadline {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            color: #a8a8a8;
+            max-width: 700px;
+            margin: 0 auto 1rem;
+            font-weight: 400;
+        }
+
+        .tagline {
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            color: #666;
+            margin-bottom: 3rem;
+            font-style: italic;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+            color: white;
+            padding: 1.5rem 3rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            border: 2px solid #dc2626;
+            box-shadow: 0 10px 40px rgba(220, 38, 38, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 50px rgba(220, 38, 38, 0.5);
+        }
+
+        .section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-dark {
+            background: #0f0f0f;
+        }
+
+        .section-accent {
+            background: linear-gradient(135deg, #1a0000 0%, #0f0f0f 100%);
+            border-top: 1px solid rgba(220, 38, 38, 0.2);
+            border-bottom: 1px solid rgba(220, 38, 38, 0.2);
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 2rem;
+            text-align: center;
+            color: #fff;
+        }
+
+        .problem-list {
+            list-style: none;
+            max-width: 800px;
+            margin: 3rem auto;
+        }
+
+        .problem-list li {
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            background: rgba(220, 38, 38, 0.05);
+            border-left: 4px solid #dc2626;
+            font-size: 1.1rem;
+            position: relative;
+        }
+
+        .problem-list li::before {
+            content: '✗';
+            color: #dc2626;
+            font-weight: bold;
+            font-size: 1.5rem;
+            position: absolute;
+            left: -1.5rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .feature-card {
+            background: #1a1a1a;
+            padding: 2.5rem;
+            border-radius: 12px;
+            border: 1px solid #2a2a2a;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            border-color: #dc2626;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(220, 38, 38, 0.2);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        .feature-card p {
+            color: #a8a8a8;
+            line-height: 1.8;
+        }
+
+        .feature-card .detail {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #2a2a2a;
+            color: #dc2626;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            max-width: 900px;
+            margin: 3rem auto;
+        }
+
+        .comparison-box {
+            padding: 2rem;
+            border-radius: 12px;
+        }
+
+        .for-you {
+            background: rgba(34, 197, 94, 0.1);
+            border: 2px solid #22c55e;
+        }
+
+        .not-for-you {
+            background: rgba(220, 38, 38, 0.1);
+            border: 2px solid #dc2626;
+        }
+
+        .comparison-box h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .comparison-box ul {
+            list-style: none;
+        }
+
+        .comparison-box li {
+            padding: 0.8rem 0;
+            padding-left: 2rem;
+            position: relative;
+        }
+
+        .for-you li::before {
+            content: '✓';
+            color: #22c55e;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .not-for-you li::before {
+            content: '✗';
+            color: #dc2626;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .pricing-box {
+            max-width: 600px;
+            margin: 3rem auto;
+            background: #1a1a1a;
+            padding: 3rem;
+            border-radius: 12px;
+            border: 2px solid #dc2626;
+            text-align: center;
+        }
+
+        .price {
+            font-size: 4rem;
+            font-weight: 900;
+            color: #dc2626;
+            margin: 1rem 0;
+        }
+
+        .price-detail {
+            color: #a8a8a8;
+            margin-bottom: 2rem;
+        }
+
+        .value-note {
+            background: rgba(220, 38, 38, 0.1);
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+        }
+
+        .guarantee {
+            background: #0f0f0f;
+            padding: 2rem;
+            border-radius: 12px;
+            margin-top: 2rem;
+            border: 1px solid #2a2a2a;
+        }
+
+        .testimonial {
+            background: #1a1a1a;
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 4px solid #dc2626;
+            margin: 2rem 0;
+            font-style: italic;
+            color: #d0d0d0;
+        }
+
+        .testimonial-author {
+            margin-top: 1rem;
+            font-style: normal;
+            color: #a8a8a8;
+            font-size: 0.9rem;
+        }
+
+        .fire-divider {
+            text-align: center;
+            font-size: 3rem;
+            margin: 3rem 0;
+            opacity: 0.3;
+        }
+
+        .urgency-banner {
+            background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-weight: 600;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .faq {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            margin-bottom: 2rem;
+            background: #1a1a1a;
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid #2a2a2a;
+        }
+
+        .faq-question {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 1rem;
+        }
+
+        .faq-answer {
+            color: #a8a8a8;
+            line-height: 1.8;
+        }
+
+        footer {
+            background: #000;
+            padding: 3rem 2rem;
+            text-align: center;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .comparison {
+                grid-template-columns: 1fr;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin: 3rem 0;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 900;
+            color: #dc2626;
+            display: block;
+        }
+
+        .stat-label {
+            color: #a8a8a8;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .image-placeholder {
+            background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+            border: 2px dashed #3a3a3a;
+            border-radius: 12px;
+            padding: 3rem;
+            text-align: center;
+            color: #666;
+            margin: 2rem 0;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <!-- Urgency Banner -->
+    <div class="urgency-banner">
+        ⚡ Only <strong>X of 50</strong> Founding Member spots remaining — Price increases after that
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="badge">The Writer's Forge Pro</div>
+            <h1>Write Like You <span class="curse">Fucking</span> Mean It.</h1>
+            <p class="subheadline">No gurus. No formulas. Just blood on the page and writers who care.</p>
+            <p class="tagline">You just spent five days proving you can show up. Now it's time to keep that fire burning.</p>
+            <a href="#apply" class="cta-button">Apply to Forge Pro</a>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="section section-dark">
+        <h2>Most Writers Stop Here</h2>
+        <p style="text-align: center; color: #a8a8a8; font-size: 1.2rem; max-width: 700px; margin: 0 auto 3rem;">
+            They go back to writing alone. Chasing feedback from strangers. Hoping discipline somehow sticks.
+        </p>
+        
+        <ul class="problem-list">
+            <li>Generic "coverage" that tells you what's wrong but never how to fix it</li>
+            <li>Guru systems that promise "the secret" to selling scripts</li>
+            <li>Beat sheets that make every story sound the same</li>
+            <li>Working in isolation with no one to hold you accountable</li>
+            <li>Endless half-finished drafts and second-guessing yourself</li>
+            <li>Communities full of hobbyists who aren't serious</li>
+        </ul>
+
+        <p style="text-align: center; color: #fff; font-size: 1.5rem; margin-top: 3rem;">
+            <strong>That's where the progress ends.</strong><br>
+            <span style="color: #dc2626;">That's where The Writer's Forge Pro begins.</span>
+        </p>
+    </section>
+
+    <div class="fire-divider">🔥 🔥 🔥</div>
+
+    <!-- What's Inside Section -->
+    <section class="section">
+        <h2>What's Inside Forge Pro</h2>
+        
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🔥</div>
+                <h3>Weekly Live Coaching</h3>
+                <p>Real feedback from David Stem, a produced writer who speaks the language of story, not theory. Not "this character is unlikeable." But "you're protecting her instead of letting her break."</p>
+                <div class="detail">Every Tuesday, 90 minutes</div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">⚒️</div>
+                <h3>Rewrite Labs</h3>
+                <p>Monthly intensives where we don't just collect notes—we learn how to apply them. Bring a scene that's not working. We'll break it down together. You'll leave knowing exactly what to do.</p>
+                <div class="detail">First Thursday of every month</div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🤝</div>
+                <h3>Accountability Pods</h3>
+                <p>Small groups (4-5 writers) that meet weekly. You share commitments. You hold each other to it. Like your Challenge team—but permanent, deeper, for real writers who finish shit.</p>
+                <div class="detail">Your pod, your schedule</div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🎬</div>
+                <h3>Guest Sessions</h3>
+                <p>Monthly conversations with working writers, producers, and reps. Not theory. Not inspiration porn. Real talk about what actually matters in the industry.</p>
+                <div class="detail">Last Friday of every month</div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🤖</div>
+                <h3>Primal Forge GPT</h3>
+                <p>Your AI writing partner, trained on David's methodology. Available 24/7 for brainstorming and working through stuck points. Not a replacement for humans—a tool for between sessions.</p>
+                <div class="detail">Always available</div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">💬</div>
+                <h3>Private Community</h3>
+                <p>Access to writers who take the work—and each other—seriously. Daily check-ins. Scene swaps. Draft reads. The Challenge experience, but sustained.</p>
+                <div class="detail">Always available in Skool</div>
+            </div>
+        </div>
+    </section>
+
+    <div class="fire-divider">🔥 🔥 🔥</div>
+
+    <!-- Who This Is For Section -->
+    <section class="section section-accent">
+        <h2>Is This For You?</h2>
+        
+        <div class="comparison">
+            <div class="comparison-box for-you">
+                <h3 style="color: #22c55e;">✓ This Is For You If:</h3>
+                <ul>
+                    <li>You finished the Challenge and felt what support means</li>
+                    <li>You have a project you're serious about finishing</li>
+                    <li>You're tired of gurus and want your actual voice</li>
+                    <li>You can handle tough feedback</li>
+                    <li>You're ready to stop collecting advice</li>
+                    <li>You want community with writers who care</li>
+                    <li>You'll show up weekly, no excuses</li>
+                </ul>
+            </div>
+
+            <div class="comparison-box not-for-you">
+                <h3 style="color: #dc2626;">✗ This Is NOT For You If:</h3>
+                <ul>
+                    <li>You "might write something someday"</li>
+                    <li>You want a magic formula or secret trick</li>
+                    <li>You want cheerleading, not real feedback</li>
+                    <li>You can't commit to showing up weekly</li>
+                    <li>You get defensive about your work</li>
+                    <li>You're looking for the "easy way"</li>
+                </ul>
+            </div>
+        </div>
+
+        <p style="text-align: center; color: #a8a8a8; font-size: 1.1rem; margin-top: 2rem;">
+            If you're in the second column, stay in the free Forge. It's still valuable.<br>
+            <strong style="color: #fff;">But Pro is for writers who are all in.</strong>
+        </p>
+    </section>
+
+    <div class="fire-divider">🔥 🔥 🔥</div>
+
+    <!-- Pricing Section -->
+    <section class="section">
+        <h2>The Investment</h2>
+        
+        <div class="pricing-box">
+            <div style="color: #a8a8a8; font-size: 1.1rem;">Monthly</div>
+            <div class="price">$197</div>
+            <div class="price-detail">or $1,970/year (save 2 months)</div>
+            
+            <div class="value-note">
+                <strong>What you're getting monthly:</strong><br>
+                4 live coaching sessions ($800 value) • Rewrite Lab ($200) • Weekly accountability pod ($400) • Guest sessions (priceless) • AI partner ($50) • Community access ($100)<br><br>
+                <strong style="color: #dc2626;">Total monthly value: $1,550+</strong>
+            </div>
+
+            <a href="#apply" class="cta-button" style="margin-top: 2rem;">Apply Now</a>
+
+            <div class="guarantee">
+                <strong style="color: #fff;">30-Day Money-Back Guarantee</strong><br>
+                Try it for 30 days. If it's not transforming your writing practice, email me and I'll refund every penny. No questions. No hassle.
+            </div>
+        </div>
+
+        <div style="max-width: 700px; margin: 3rem auto; text-align: center; padding: 2rem; background: rgba(220, 38, 38, 0.1); border-radius: 12px;">
+            <h3 style="color: #dc2626; margin-bottom: 1rem;">⚠️ Limited to 50 Founding Members</h3>
+            <p style="color: #a8a8a8;">
+                I can only give deep attention to so many writers. After 50, the price goes up to <strong style="color: #fff;">$247/month</strong>. Founding members lock in $197 for life.
+            </p>
+        </div>
+    </section>
+
+    <div class="fire-divider">🔥 🔥 🔥</div>
+
+    <!-- Testimonials Section -->
+    <section class="section section-dark">
+        <h2>What Writers Are Saying</h2>
+        
+        <div class="image-placeholder">
+            [Add photo testimonial collage here - screenshots from community, photos of writers, etc.]
+        </div>
+
+        <div class="testimonial">
+            "I've been in three other screenwriting communities. They were full of people collecting notes and never actually writing. Forge Pro is different. Everyone here is serious. Everyone shows up. I've finished more in two months here than I did in two years alone."
+            <div class="testimonial-author">— Sarah K., Los Angeles</div>
+        </div>
+
+        <div class="testimonial">
+            "David doesn't coddle you. He tells you exactly what's not working and how to fix it. It's tough but it's what I needed. My script went from 'meh' to something I'm actually proud of."
+            <div class="testimonial-author">— Marcus T., New York</div>
+        </div>
+
+        <div class="testimonial">
+            "The accountability pod changed everything. I thought I just needed more time to write. Turns out I needed people who actually cared if I did it or not. We meet every Sunday. I don't miss it."
+            <div class="testimonial-author">— Jennifer L., Austin</div>
+        </div>
+
+        <div class="stats">
+            <div class="stat">
+                <span class="stat-number">X</span>
+                <span class="stat-label">Scripts Finished</span>
+            </div>
+            <div class="stat">
+                <span class="stat-number">X</span>
+                <span class="stat-label">Pro Members</span>
+            </div>
+            <div class="stat">
+                <span class="stat-number">4mo</span>
+                <span class="stat-label">Avg Time to Finish</span>
+            </div>
+        </div>
+    </section>
+
+    <div class="fire-divider">🔥 🔥 🔥</div>
+
+    <!-- FAQ Section -->
+    <section class="section">
+        <h2>Questions?</h2>
+        
+        <div class="faq">
+            <div class="faq-item">
+                <div class="faq-question">What if I can't make the live sessions?</div>
+                <div class="faq-answer">Everything is recorded. But this works best if you show up live. The transformation happens in the room.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Do I need to have finished the 5-Day Challenge?</div>
+                <div class="faq-answer">No, but you should understand what you're getting into. The Challenge is a good litmus test for whether Pro is right for you.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">What if I'm a beginner?</div>
+                <div class="faq-answer">Pro is not for absolute beginners. You should have written at least one complete draft of something before joining. This is about getting better, not getting started.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">What's the time commitment?</div>
+                <div class="faq-answer">Minimum 5 hours per week: 90 min coaching call, 60 min pod, 90 min applying feedback, 60 min community. If you don't have 5 hours/week, you're not ready.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Can I pause my membership?</div>
+                <div class="faq-answer">Yes. Life happens. You can pause for up to 3 months per year. Just let me know.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Will this help me sell a script?</div>
+                <div class="faq-answer">This will help you write a better script. Which increases your odds. But I'm not selling you "the secret to Hollywood." I'm teaching you craft and giving you community.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="section section-accent">
+        <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+            <h2 style="margin-bottom: 2rem;">The Real Question</h2>
+            <p style="font-size: 1.3rem; color: #d0d0d0; margin-bottom: 1rem;">
+                You felt what it was like during the Challenge:
+            </p>
+            <p style="font-size: 1.5rem; color: #fff; margin-bottom: 2rem;">
+                Structure. Support. Accountability. Progress.
+            </p>
+            <p style="font-size: 1.2rem; color: #a8a8a8; margin-bottom: 3rem;">
+                Do you want that to be your new normal?<br>
+                Or do you want to go back to writing alone and hoping discipline sticks?
+            </p>
+            <p style="font-size: 1.4rem; color: #dc2626; font-weight: 700; margin-bottom: 3rem;">
+                That's the only question that matters.
+            </p>
+            
+            <a href="#apply" class="cta-button" style="font-size: 1.4rem; padding: 2rem 4rem;">Apply to Forge Pro</a>
+            
+            <p style="margin-top: 2rem; color: #666; font-size: 0.9rem;">
+                Applications reviewed within 24 hours • Immediate access upon acceptance
+            </p>
+        </div>
+    </section>
+
+    <!-- Application Form Section -->
+    <section class="section" id="apply">
+        <h2>Apply to The Writer's Forge Pro</h2>
+        
+        <div style="max-width: 600px; margin: 0 auto; background: #1a1a1a; padding: 3rem; border-radius: 12px; border: 2px solid #dc2626;">
+            <div class="image-placeholder">
+                [Embed your actual application form here - Typeform, Google Forms, or custom form]<br><br>
+                Include fields for:<br>
+                - Name<br>
+                - Email<br>
+                - What are you working on?<br>
+                - What's your biggest challenge?<br>
+                - What do you hope to get from Forge Pro?<br>
+                - Are you ready to commit to showing up weekly?
+            </div>
+            
+            <p style="text-align: center; margin-top: 2rem; color: #a8a8a8;">
+                Questions? Email <strong style="color: #dc2626;">david@writersforge.com</strong>
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 The Writer's Forge. All rights reserved.</p>
+        <p style="margin-top: 1rem;">
+            <a href="#" style="color: #666; text-decoration: none;">Privacy Policy</a> • 
+            <a href="#" style="color: #666; text-decoration: none;">Terms of Service</a>
+        </p>
+    </footer>
+
+    <script>
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Update urgency banner with actual number (you'll need to update this manually or via backend)
+        // Example: document.querySelector('.urgency-banner').innerHTML = '⚡ Only <strong>12 of 50</strong> Founding Member spots remaining';
+    </script>
+</body>
+</html>
